@@ -28,16 +28,32 @@ export class SearchBar {
 
   selectedTranslation = signal<{ id: string; value: string }>(this.emptyOption);
 
-  bookObject = signal<BooksWithChapters>({ 'No Data': 0 });
+  bookObject = signal<BooksWithChapters>({
+    'No Data': {
+      chapters: 0,
+      value: '',
+    },
+  });
 
-  books = computed(() => Object.keys(this.bookObject()).map((item) => ({ id: item, value: item })));
+  books = computed(() =>
+    Object.keys(this.bookObject()).map((item) => ({
+      id: item,
+      value: this.bookObject()[item].value,
+    })),
+  );
 
   selectedBook = signal<{ id: string; value: string }>(this.emptyOption);
 
   chapters = computed(() => {
-    const booksMap = this.bookObject() as Record<string, number>;
+    const booksMap = this.bookObject() as Record<
+      string,
+      {
+        chapters: number;
+        value: string;
+      }
+    >;
     const bookKey = this.selectedBook()?.id || '';
-    const totalChapters = Number(booksMap[bookKey] || 0);
+    const totalChapters = Number(booksMap[bookKey].chapters || 0);
 
     return Array.from({ length: totalChapters }, (_, i) => ({
       id: String(i + 1),
@@ -65,7 +81,12 @@ export class SearchBar {
         this.bookObject.set(booksMap);
       },
       error: () => {
-        this.bookObject.set({ 'No Data': 0 });
+        this.bookObject.set({
+          'No Data': {
+            chapters: 0,
+            value: '',
+          },
+        });
       },
     });
   }

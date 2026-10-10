@@ -1,3 +1,6 @@
 export interface BooksWithChapters {
-  [name: string]: number;
+  [name: string]: {
+    chapters: number,
+    value: string
+  };
 }
