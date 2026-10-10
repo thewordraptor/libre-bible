@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import pkg from '../../../package.json';
 
 @Component({
   imports: [],
@@ -8,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class Footer {
   protected year = new Date().getFullYear();
+  version = pkg.version;
 }
