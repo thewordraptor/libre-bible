@@ -23,7 +23,7 @@ export class Data {
 
           acc[langGroup].push({
             id: item.id,
-            value: item.shortName,
+            value: item.name,
           });
 
           return acc;
@@ -37,7 +37,10 @@ export class Data {
       map((data: Books) => {
         const result: BooksWithChapters = {};
         for (const book of data.books) {
-          result[book.id] = book.numberOfChapters;
+          result[book.id] = {
+            chapters: book.numberOfChapters,
+            value: book.name
+          };
         }
         return result;
       }),

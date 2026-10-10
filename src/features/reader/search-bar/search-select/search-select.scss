@@ -11,4 +11,10 @@
 
 mat-form-field {
   width: 9rem;
+
+  mat-option {
+    font-size: 0.8rem;
+    margin: 0.25rem 0px;
+    width: 7.5rem;
+  }
 }
