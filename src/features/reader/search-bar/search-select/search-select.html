@@ -1,0 +1,25 @@
+<mat-form-field appearance="outline">
+  <mat-select
+    [placeholder]="placeholder()"
+    [ngModel]="selectedValue()"
+    (ngModelChange)="valueChange($event)"
+  >
+    <div class="search-bar" (click)="$event.stopPropagation()">
+      <input
+        type="text"
+        placeholder="Search..."
+        [ngModel]="searchQuery()"
+        (ngModelChange)="searchQuery.set($event)"
+      />
+      @if (searchQuery()) {
+      <button type="button" (click)="clearSearch($event)" class="clear-btn">✕</button>
+      }
+    </div>
+
+    @for (opt of filteredOptions(); track opt) {
+    <mat-option [title]="opt.id" [value]="opt">{{ opt.value }}</mat-option>
+    } @empty {
+    <mat-option disabled>No matches found</mat-option>
+    }
+  </mat-select>
+</mat-form-field>

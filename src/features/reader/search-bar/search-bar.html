@@ -1,0 +1,26 @@
+<form class="search-bar" ngForm="searchForm">
+  <search-select
+    [placeholder]="'Language'"
+    [options]="languages()"
+    (outputValue)="setLang($event)"
+  ></search-select>
+  @if(selectedLang().id.length) {
+  <search-select
+    [placeholder]="'Translations'"
+    [options]="langObject()[selectedLang().id]"
+    (outputValue)="setTranslation($event)"
+  ></search-select>
+  } @if(selectedTranslation().id.length) {
+  <search-select
+    [placeholder]="'Books'"
+    [options]="books()"
+    (outputValue)="setBook($event)"
+  ></search-select>
+  } @if(selectedBook().id.length) {
+  <search-select
+    [placeholder]="'Chapters'"
+    [options]="chapters()"
+    (outputValue)="setChapter($event)"
+  ></search-select>
+  }
+</form>

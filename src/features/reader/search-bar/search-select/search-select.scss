@@ -1,0 +1,14 @@
+.search-bar {
+  color: white;
+  display: flex;
+  margin: 0px 0.25rem 0.4rem;
+  position: sticky;
+  height: 2rem;
+  z-index: 3;
+  left: 0;
+  top: 0;
+}
+
+mat-form-field {
+  width: 9rem;
+}

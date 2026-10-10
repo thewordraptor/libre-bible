@@ -1,0 +1,10 @@
+<bible-search-bar (chapterData)="chapterData.set($event)"></bible-search-bar>
+@if (chapterData().number) { @for (data of chapterData().content; track data) { @if(data.type ===
+"heading") {
+<div class="heading">{{ data.text }}</div>
+} @if(data.type === "verse") {
+<div class="verse">
+  <span>{{data.number }}</span>
+  <span>{{data.text}}</span>
+</div>
+} } }

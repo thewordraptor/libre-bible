@@ -1,0 +1,23 @@
+.footer-block {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  height: 2rem;
+  width: 100%;
+  background-color: #1e1f20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+
+  div:first-child {
+    margin-left: 1rem;
+  }
+
+  div {
+    a {
+      margin-right: 1rem;
+      color: white;
+    }
+  }
+}
